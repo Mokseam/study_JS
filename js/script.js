@@ -14,4 +14,10 @@ console.log(addExpenses.toLowerCase());
 console.log(addExpenses.split()); 
 let budgetDay = 100000000 / 30;
 console.log('вот столько будет в день зарабатываться ' + budgetDay);
-//сложное потом досдам, а то спать охота! Пока что знания нулевые, но все кажется довольно простым.
+/*сложное потом досдам, а то спать охота! Пока что знания нулевые, но все кажется довольно простым.
+P.S 
+$ git checkout -b lesson_2
+fatal: A branch named 'lesson_2' already exists.
+это как? Я не создавал такой бранч..
+*/
+
