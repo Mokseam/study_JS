@@ -1,4 +1,4 @@
-let money = 100000000;
+let money = 10000000;
 let  income = 'проституция';
 let  addExpenses = 'Реклама, Пиар, Аренда';
 let  deposit = true;
@@ -33,5 +33,5 @@ console.log(amount1);
 let amount2 = prompt('Во сколько это обойдется?');
 console.log(amount2);
 
-let budgetMonth = ();
+let budgetMonth = (1);
 
