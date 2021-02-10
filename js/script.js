@@ -27,19 +27,23 @@ let expenses2 = prompt('Введите обязательную статью р�
 let amount2 = +prompt('Во сколько это обойдется?');
 
 let budgetMonth = money - (amount1 + amount2);
-console.log("бюджет на месяц: " + budgetMonth);
-
-budgetDay = budgetMonth / 30;
-console.log(Math.floor(budgetDay));
-
-mission = mission / budgetMonth;
-console.log(Math.ceil(mission));
-if (budgetDay >= 1200){
-console.log('у вас высокий уровень дохода');
-} else if((budgetDay >= 600) && (budgetDay < 1200)){
-    console.log('У вас средний уровень дохода');
-} else if((budgetDay < 600) && (budgetDay > 0)){
-console.log("Ваш доход ниже среднего");
-} else if(budgetDay < 0){
+if (budgetMonth != 0) {
+    console.log("бюджет на месяц: " + budgetMonth);
+    budgetDay = budgetMonth / 30;
+    console.log(Math.floor(budgetDay));
+    if (budgetDay >= 1200){
+        console.log('у вас высокий уровень дохода');
+    } 
+    else if((budgetDay >= 600) && (budgetDay < 1200)){
+        console.log('У вас средний уровень дохода');
+    } 
+    else if((budgetDay < 600) && (budgetDay > 0)){
+        console.log("Ваш доход ниже среднего");
+    } 
+    else if(budgetDay < 0){
         console.log("что-то пошло не так");
     }
+}
+else {
+    console.log('Ошибка');
+}
