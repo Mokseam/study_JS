@@ -27,10 +27,13 @@ let expenses2 = prompt('Введите обязательную статью р�
 let amount2 = +prompt('Во сколько это обойдется?');
 
 let budgetMonth = money - (amount1 + amount2);
+
+mission = budgetMonth / 30;
+console.log(`цель будет достигнута за ${mission} месяцев`);
 if (budgetMonth != 0) {
     console.log("бюджет на месяц: " + budgetMonth);
     budgetDay = budgetMonth / 30;
-    console.log(Math.floor(budgetDay));
+    console.log("Бюджет на день " + Math.floor(budgetDay));
     if (budgetDay >= 1200){
         console.log('у вас высокий уровень дохода');
     } 
@@ -47,3 +50,4 @@ if (budgetMonth != 0) {
 else {
     console.log('Ошибка');
 }
+
