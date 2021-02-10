@@ -1,3 +1,4 @@
+'use strict'
 let money = 30000; //доход за месяц
 let  income = 'проституция';
 let  addExpenses = 'Реклама, Пиар, Аренда';
@@ -14,22 +15,21 @@ console.log(addExpenses.split());
 let budgetDay = money / 30;
 console.log('вот столько будет в день зарабатываться ' + budgetDay);
 
-money = prompt('Ваш месячный доход?');
+money = prompt('Ваш месячный доход?', '500 ');
 
 addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
 
 deposit = confirm('Есть ли у вас депозит в банке?');
 
 let expenses1 = prompt('Введите обязательную статью расходов');
-let amount1 = +prompt('Во сколько это обойдется?');
+let amount1 = +prompt('Во сколько это обойдется?', '100');
 
 let expenses2 = prompt('Введите обязательную статью расходов');
-let amount2 = +prompt('Во сколько это обойдется?');
+let amount2 = +prompt('Во сколько это обойдется?', '100');
 
 let budgetMonth = money - (amount1 + amount2);
 
-mission = budgetMonth / 30;
-console.log(`цель будет достигнута за ${mission} месяцев`);
+console.log(`цель будет достигнута за ${budgetMonth / 30} месяцев`);
 if (budgetMonth != 0) {
     console.log("бюджет на месяц: " + budgetMonth);
     budgetDay = budgetMonth / 30;
@@ -50,4 +50,3 @@ if (budgetMonth != 0) {
 else {
     console.log('Ошибка');
 }
-
