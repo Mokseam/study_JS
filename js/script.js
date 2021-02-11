@@ -28,8 +28,8 @@ let expenses2 = prompt('Введите обязательную статью р�
 let amount2 = +prompt('Во сколько это обойдется?', '100');
 
 let budgetMonth = money - (amount1 + amount2);
-
-console.log(`цель будет достигнута за ${budgetMonth / 30} месяцев`);
+budgetMonth(Math.ceil);
+console.log(`цель будет достигнута за ${Math.floor(budgetMonth) / 30} месяцев`);
 if (budgetMonth != 0) {
     console.log("бюджет на месяц: " + budgetMonth);
     budgetDay = budgetMonth / 30;
