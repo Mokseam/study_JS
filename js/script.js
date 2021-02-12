@@ -20,37 +20,52 @@ addExpenses = prompt('Перечислите возможные расходы �
 
 deposit = confirm('Есть ли у вас депозит в банке?');
 
-let expenses1 = prompt('Введите обязательную статью расходов');
-let amount1 = +prompt('Во сколько это обойдется?', '100');
+// let expenses1 = prompt('Введите обязательную статью расходов');
+// let amount1 = +prompt('Во сколько это обойдется?', '100');
 
-let expenses2 = prompt('Введите обязательную статью расходов');
-let amount2 = +prompt('Во сколько это обойдется?', '100');
-
+// let expenses2 = prompt('Введите обязательную статью расходов');
+// let amount2 = +prompt('Во сколько это обойдется?', '100');
+// ===============================================================
+let n = 0;
+let sum = 0;
+let expenses1 = " ";
+do {
+    expenses1 = prompt('Введите обязательную статью расходов:');
+    sum = sum + (+prompt('Во сколько обойдется: ' + expenses1));
+    n++;
+}
+while (n < 2);
+// ===============================================================
 
 
 if (getAccumulatedMonth() != 0) {
     budgetDay = getAccumulatedMonth() / 30;
     if (budgetDay >= 1200){
+        console.log('У вас высокий уровень дохода');
     } 
     else if((budgetDay >= 600) && (budgetDay < 1200)){
+        console.log('У вас средний уровень дохода');
     } 
     else if((budgetDay < 600) && (budgetDay > 0)){
+        console.log('у вас низкий уровень дохода');
     } 
     else if(budgetDay < 0){
+        console.log('что-то пошло не так');
     }
 }
 else {
     console.log('Ошибка');
 };
 
-function getExpensesMonth(){
-return(amount1 + amount2);
-}; 
-console.log(getExpensesMonth());
+function getExpensesMonth(n){
+return !isNaN(parseFloat(n)) && isFinite(n)
+}
+console.log(getExpensesMonth(sum));
+
 // сумма расходов
 
 function getAccumulatedMonth() {
-    return money - (amount1 + amount2);
+    return money - sum;
 };
 // Накопления за месяц
 
@@ -60,15 +75,20 @@ function getTargetMonth(jopaSlona, srakaMuravya) {
     return jopaSlona / srakaMuravya;
 };
 
+if (accumulatedMonth >= 0){
 console.log("срок достижения цели " + Math.ceil(getTargetMonth(mission, accumulatedMonth)) + " месяцев");
+budgetDay = accumulatedDay(accumulatedMonth);
 
+console.log("Бюджет на день " + Math.ceil(budgetDay));
+}
+else {
+    console.log('Цель не будет достигнута');
+    console.log('У вас нет бюджета на день');
+    
+}
 function accumulatedDay(dildakSlona) {
     return dildakSlona / 30;
 };
-
-budgetDay = accumulatedDay(accumulatedMonth);
-
-console.log("Бюджет на день " + budgetDay);
 
 function getStatusIncome(data) {
     return data;
