@@ -28,10 +28,10 @@ deposit = confirm('Есть ли у вас депозит в банке?');
 // ===============================================================
 let n = 0;
 let sum = 0;
-let expenses1 = " ";
+let expenses = " ";
 do {
-    expenses1 = prompt('Введите обязательную статью расходов:');
-    sum = sum + (+prompt('Во сколько обойдется: ' + expenses1));
+    expenses = prompt('Введите обязательную статью расходов:');
+    sum = sum + (+prompt('Во сколько обойдется: ' + expenses));
     n++;
 }
 while (n < 2);
