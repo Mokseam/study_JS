@@ -29,12 +29,15 @@ deposit = confirm('Есть ли у вас депозит в банке?');
 let n = 0;
 let sum = 0;
 let expenses = " ";
-do {
-    expenses = prompt('Введите обязательную статью расходов:');
-    sum = sum + (+prompt('Во сколько обойдется: ' + expenses));
-    n++;
-}
-while (n < 2);
+function start() {
+    do {
+        expenses = prompt('Введите обязательную статью расходов:');
+        sum = sum + (+prompt('Во сколько обойдется: ' + expenses));
+        n++;
+    }
+    while (n < 2);
+};
+start();
 // ===============================================================
 
 
@@ -49,7 +52,7 @@ if (getAccumulatedMonth() != 0) {
     else if((budgetDay < 600) && (budgetDay > 0)){
         console.log('у вас низкий уровень дохода');
     } 
-    else if(budgetDay < 0){
+    else if(budgetDay <= 0){
         console.log('что-то пошло не так');
     }
 }
@@ -75,10 +78,9 @@ function getTargetMonth(jopaSlona, srakaMuravya) {
     return jopaSlona / srakaMuravya;
 };
 
-if (accumulatedMonth >= 0){
+if (accumulatedMonth > 0){
 console.log("срок достижения цели " + Math.ceil(getTargetMonth(mission, accumulatedMonth)) + " месяцев");
 budgetDay = accumulatedDay(accumulatedMonth);
-
 console.log("Бюджет на день " + Math.ceil(budgetDay));
 }
 else {
