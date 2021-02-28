@@ -18,17 +18,23 @@ let appData = {
         if(confirm("Есть ли у вас дополнительный источник заработка?")){
             let itemIncome = prompt("какой у вас дополнительный заработок?", 
             "преподаю");
-            
-            console.log(typeof itemIncome);
-            if(!isNaN(itemIncome)){
+            if(itemIncome === ' ' || !isNaN(itemIncome))
+            {
                 while(!isNaN(itemIncome))
                 {
-                alert("Ошибка");
+                alert("Ошибка, вы ввели неверное значение");
                 itemIncome = prompt("какой у вас дополнительный заработок?",
                  "преподаю");
                 }
             };
             let cashIncome = prompt("сколько в месяц зарабатываете?", 10000);
+            if(cashIncome === ' ' || isNaN(cashIncome)) {
+                while(isNaN(cashIncome))
+                {
+                    alert("Ошибка, введите число");
+                    cashIncome = prompt("сколько в месяц зарабатываете?", 10000);
+                }
+            }
             appData.income[itemIncome] = cashIncome; //проверка
            
         };
@@ -39,8 +45,19 @@ let appData = {
         appData.deposit = confirm('Есть ли у вас депозит в банке?');
 
         do {
-            let a = prompt('Введите обязательную статью расходов:'); //проверка
+            let a = prompt('Введите обязательную статью расходов:');
+            if(a === ' ' || !isNaN(a)) {
+                while(!isNaN(a)) {
+                    alert('Вы ввели неверное значение');
+                    a = prompt('Введите обязательную статью расходов:');
+                }
+            };
             let yop = (+prompt('Во сколько обойдется: ' + a));
+            if(yop === ' ' || isNaN(yop))
+            while(isNaN(yop)) {
+                    alert("Ошибка, введите число");
+                    yop = (+prompt('Во сколько обойдется: ' + a));
+            }
             appData.expenses[a] = yop;
             n++;
         }
@@ -58,6 +75,13 @@ let appData = {
     },
     methodStart: function(){
         appData.budget = prompt('Ваш месячный доход?', '20000');
+        if(appData.budget === ' ' || isNaN(appData.budget))
+        {
+            while(isNaN(appData.budget)) {
+                alert('Ошибка, введите число');
+                appData.budget = prompt('Ваш месячный доход?', '20000');
+            }
+        }
     },
     methodBudget: function(){
         appData.budgetMonth = appData.budget - appData.methodExpensesMonth();
@@ -107,8 +131,18 @@ let appData = {
     getInfoDeposit: function(){
        if(appData.deposit){
            appData.percentDeposit = prompt("какой у вас годовой процент?", "10");
-           appData.moneyDeposit = prompt("Какая сумма заложена?", 10000); //проверка
-       }
+           if(appData.percentDeposit === ' ' || isNaN(appData.percentDeposit))
+           while(isNaN(appData.percentDeposit)){
+               alert('ошибка, введите число');
+               appData.percentDeposit = prompt("какой у вас годовой процент?", "10");
+           };
+           appData.moneyDeposit = prompt("Какая сумма заложена?", 10000);
+           if(appData.moneyDeposit === ' ' || isNaN(appData.moneyDeposit))
+           while(isNaN(appData.moneyDeposit)){
+               alert('ошибка, введите число');
+               appData.moneyDeposit = prompt("Какая сумма заложена?", 10000);
+           };
+       };
     },
     calcSavedMoney: function(){
         return appData.budgetMonth * appData.period;
