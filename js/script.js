@@ -35,28 +35,28 @@ let appData = {
                     cashIncome = prompt("сколько в месяц зарабатываете?", 10000);
                 }
             }
-            appData.income[itemIncome] = cashIncome; //проверка
+            appData.income[itemIncome] = cashIncome; 
            
-        };
-
+        };        
+        
         let n = 0;
-        appData.addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
-        appData.addExpenses = appData.addExpenses.toLocaleUpperCase().split(',');
+        appData.addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'врачи', 'лекарства');
+        appData.addExpenses = appData.addExpenses.replace(/(?:^|\s)(\S)/ug, m => m.toUpperCase());
         appData.deposit = confirm('Есть ли у вас депозит в банке?');
 
         do {
-            let a = prompt('Введите обязательную статью расходов:');
+            let a = prompt('Введите обязательную статью расходов:', 'смазка');
             if(a === ' ' || !isNaN(a)) {
                 while(!isNaN(a)) {
                     alert('Вы ввели неверное значение');
-                    a = prompt('Введите обязательную статью расходов:');
+                    a = prompt('Введите обязательную статью расходов:', 'cмазка');
                 }
             };
-            let yop = (+prompt('Во сколько обойдется: ' + a));
+            let yop = (+prompt('Во сколько обойдется: ' + a, '1000'));
             if(yop === ' ' || isNaN(yop))
             while(isNaN(yop)) {
                     alert("Ошибка, введите число");
-                    yop = (+prompt('Во сколько обойдется: ' + a));
+                    yop = (+prompt('Во сколько обойдется: ' + a, "1000"));
             }
             appData.expenses[a] = yop;
             n++;
@@ -148,8 +148,10 @@ let appData = {
         return appData.budgetMonth * appData.period;
     },
 };
+
 appData.asking();
 appData.methodStart();
 appData.methodBudget();
 appData.methodgetMissionAndAccumulatedMonth();
 appData.methodShowData();
+
