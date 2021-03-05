@@ -40,8 +40,16 @@ let appData = {
         };        
         
         let n = 0;
-        appData.addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'врачи', 'лекарства');
-        appData.addExpenses = appData.addExpenses.split('')[0].toUpperCase() + appData.addExpenses.slice(1);
+        //appData.addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
+        //appData.addExpenses = appData.addExpenses.split('')[0].toUpperCase() + appData.addExpenses.slice(1);
+        let str = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
+        let strArr = str.split(', ');
+        let upperStrArr = [];
+        for (let i = 0; i < strArr.length; i++) {
+        upperStrArr.push(strArr[i][0].toUpperCase() + strArr[i].slice(1));
+        };
+        appData.addExpenses = upperStrArr.join(' ');
+
         appData.deposit = confirm('Есть ли у вас депозит в банке?');
 
         do {
